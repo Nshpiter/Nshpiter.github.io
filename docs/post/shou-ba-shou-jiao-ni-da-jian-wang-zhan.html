@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://github.githubassets.com/favicons/favicon.svg"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="<h1>教程 搭建一个个人网站</h1>
+<h2>1 教程目的</h2>
+学习建立一个自己个人网站来记录自己的生活
+<h2>2 教程内容</h2>
+<blockquote>[!NOTE]
+<h3><strong>在搭建网站前，你需要做：</strong></h3>
+1.buy一个自己的云服务器(==重要==)
+
+2.安装Xshell(进阶，==非必要==)
+
+3.购买自己的域名==(非必要==，当然用自己的公网ip也行)
+
+[!Caution]
+
+如下是以阿里云服务器为例，宝塔面板以及WordPress一键来搭建网站</blockquote>
+<h1>3 教程指导</h1>
+<h2>3.1 阿里云服务器的购买与配置</h2>
+<h3>3.1.1 登录阿里云平台</h3>
+<a href='https://cn.aliyun.com/'>阿里云-计算，为了无法计算的价值 (aliyun.com)</a>
+<blockquote>当然要先注册一个账号并且实名认证(学生认证还可以额外领取300元额度哦:smirk:)</blockquote>
+账号登录后回到该界面，next
+
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337543-PixPin_2024-10-15_22-50-20-300x154.png' alt='' />
+<h3>3.1.2 领取免费额度</h3>
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337669-PixPin_2024-10-15_23-00-56-300x137.png' alt='' />
+<h3>3.1.3 配置ESC云服务器</h3>
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337401-PixPin_2024-10-15_23-16-28-269x300.png' alt='' />
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337422-PixPin_2024-10-15_23-17-15-300x172.png' alt='' />
+
+选择==Ubantu 22.04==(好像CentOS的版本有点老)，勾选==预装宝塔面板==
+<blockquote>[!CAUTION]
+
+<strong>不要选Windows！！！</strong></blockquote>
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337381-PixPin_2024-10-15_23-14-45-300x114.png' alt='' />
+
+立即试用，会自动帮你创建一个实例，next
+<h3>3.1.4 进入实例，开始配置</h3>
+<blockquote>在实例中可以看到自己的<strong>公网IP</strong>，请牢记存放位置，鼠标贴近可以复制(没有人记得住IP吧:frowning:)
+
+[!CAUTION]
+
+<strong>在配置前我们还需进入安全组来添加端口</strong>，(因为安装宝塔面板的话默认是8888端口，而阿里云为了安全会关闭该端口，所以我们要打开)</blockquote>
+打开左侧栏安全组，点开==管理规则==
+
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337755-PixPin_2024-10-15_23-54-47-300x143.png' alt='' />
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337779-PixPin_2024-10-15_23-37-01-300x147.png' alt='' />
+
+点击==快速添加==，这里我已经添加过了
+
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337799-PixPin_2024-10-15_23-55-57-300x88.png' alt='' />
+
+这里按照我图片输入，(PS：后续为了安全我们还要修改宝塔面板的默认端口，所以我们输大一点，当然也可以小一点)
+
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337821-PixPin_2024-10-15_23-56-58-300x150.png' alt='' />
+
+添加完后，接下来再次进入左侧栏应用管理
+<blockquote>找到宝塔面板，进行安装</blockquote>
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337848-PixPin_2024-10-15_23-46-34-300x157.png' alt='' />
+<blockquote>选择自己的服务器实例，实例名称填系统给的</blockquote>
+下一步，确认订单，系统就会给你安装，耐心等待一会
+<h2>3.2 宝塔面板操作</h2>
+部署完后系统会给你一个宝塔面板的URL，以及密码。">
+<meta property="og:title" content="手把手教你搭建网站">
+<meta property="og:description" content="<h1>教程 搭建一个个人网站</h1>
+<h2>1 教程目的</h2>
+学习建立一个自己个人网站来记录自己的生活
+<h2>2 教程内容</h2>
+<blockquote>[!NOTE]
+<h3><strong>在搭建网站前，你需要做：</strong></h3>
+1.buy一个自己的云服务器(==重要==)
+
+2.安装Xshell(进阶，==非必要==)
+
+3.购买自己的域名==(非必要==，当然用自己的公网ip也行)
+
+[!Caution]
+
+如下是以阿里云服务器为例，宝塔面板以及WordPress一键来搭建网站</blockquote>
+<h1>3 教程指导</h1>
+<h2>3.1 阿里云服务器的购买与配置</h2>
+<h3>3.1.1 登录阿里云平台</h3>
+<a href='https://cn.aliyun.com/'>阿里云-计算，为了无法计算的价值 (aliyun.com)</a>
+<blockquote>当然要先注册一个账号并且实名认证(学生认证还可以额外领取300元额度哦:smirk:)</blockquote>
+账号登录后回到该界面，next
+
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337543-PixPin_2024-10-15_22-50-20-300x154.png' alt='' />
+<h3>3.1.2 领取免费额度</h3>
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337669-PixPin_2024-10-15_23-00-56-300x137.png' alt='' />
+<h3>3.1.3 配置ESC云服务器</h3>
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337401-PixPin_2024-10-15_23-16-28-269x300.png' alt='' />
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337422-PixPin_2024-10-15_23-17-15-300x172.png' alt='' />
+
+选择==Ubantu 22.04==(好像CentOS的版本有点老)，勾选==预装宝塔面板==
+<blockquote>[!CAUTION]
+
+<strong>不要选Windows！！！</strong></blockquote>
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337381-PixPin_2024-10-15_23-14-45-300x114.png' alt='' />
+
+立即试用，会自动帮你创建一个实例，next
+<h3>3.1.4 进入实例，开始配置</h3>
+<blockquote>在实例中可以看到自己的<strong>公网IP</strong>，请牢记存放位置，鼠标贴近可以复制(没有人记得住IP吧:frowning:)
+
+[!CAUTION]
+
+<strong>在配置前我们还需进入安全组来添加端口</strong>，(因为安装宝塔面板的话默认是8888端口，而阿里云为了安全会关闭该端口，所以我们要打开)</blockquote>
+打开左侧栏安全组，点开==管理规则==
+
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337755-PixPin_2024-10-15_23-54-47-300x143.png' alt='' />
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337779-PixPin_2024-10-15_23-37-01-300x147.png' alt='' />
+
+点击==快速添加==，这里我已经添加过了
+
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337799-PixPin_2024-10-15_23-55-57-300x88.png' alt='' />
+
+这里按照我图片输入，(PS：后续为了安全我们还要修改宝塔面板的默认端口，所以我们输大一点，当然也可以小一点)
+
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337821-PixPin_2024-10-15_23-56-58-300x150.png' alt='' />
+
+添加完后，接下来再次进入左侧栏应用管理
+<blockquote>找到宝塔面板，进行安装</blockquote>
+<img src='https://nsh.asia/wp-content/uploads/2024/10/1729337848-PixPin_2024-10-15_23-46-34-300x157.png' alt='' />
+<blockquote>选择自己的服务器实例，实例名称填系统给的</blockquote>
+下一步，确认订单，系统就会给你安装，耐心等待一会
+<h2>3.2 宝塔面板操作</h2>
+部署完后系统会给你一个宝塔面板的URL，以及密码。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://Nshpiter.github.io/post/shou-ba-shou-jiao-ni-da-jian-wang-zhan.html">
+<meta property="og:image" content="https://github.githubassets.com/favicons/favicon.svg">
+<title>手把手教你搭建网站</title>
+
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">手把手教你搭建网站</h1>
+<div class="title-right">
+    <a href="https://Nshpiter.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Nshpiter/Nshpiter.github.io/issues/2" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h1>教程 搭建一个个人网站</h1>
+<h2>1 教程目的</h2>
+学习建立一个自己个人网站来记录自己的生活
+<h2>2 教程内容</h2>
+<blockquote>[!NOTE]
+<h3><strong>在搭建网站前，你需要做：</strong></h3>
+1.buy一个自己的云服务器(==重要==)
+<p>2.安装Xshell(进阶，==非必要==)</p>
+<p>3.购买自己的域名==(非必要==，当然用自己的公网ip也行)</p>
+<p>[!Caution]</p>
+<p>如下是以阿里云服务器为例，宝塔面板以及WordPress一键来搭建网站</p></blockquote><p></p>
+<h1>3 教程指导</h1>
+<h2>3.1 阿里云服务器的购买与配置</h2>
+<h3>3.1.1 登录阿里云平台</h3>
+<a href="https://cn.aliyun.com/" rel="nofollow">阿里云-计算，为了无法计算的价值 (aliyun.com)</a>
+<blockquote>当然要先注册一个账号并且实名认证(学生认证还可以额外领取300元额度哦:smirk:)</blockquote>
+账号登录后回到该界面，next
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/c6bc4aa204fe641dea93e93e48ed8651617a660cce105ef78dcaa0de1926386f/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373534332d50697850696e5f323032342d31302d31355f32322d35302d32302d333030783135342e706e67"><img src="https://camo.githubusercontent.com/c6bc4aa204fe641dea93e93e48ed8651617a660cce105ef78dcaa0de1926386f/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373534332d50697850696e5f323032342d31302d31355f32322d35302d32302d333030783135342e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337543-PixPin_2024-10-15_22-50-20-300x154.png" style="max-width: 100%;"></a></p>
+<h3>3.1.2 领取免费额度</h3>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/18f166b3985e609e4f78d18eeac8cd1150bb462c4bba8a89dff4954d172a3448/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373636392d50697850696e5f323032342d31302d31355f32332d30302d35362d333030783133372e706e67"><img src="https://camo.githubusercontent.com/18f166b3985e609e4f78d18eeac8cd1150bb462c4bba8a89dff4954d172a3448/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373636392d50697850696e5f323032342d31302d31355f32332d30302d35362d333030783133372e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337669-PixPin_2024-10-15_23-00-56-300x137.png" style="max-width: 100%;"></a></p>
+<h3>3.1.3 配置ESC云服务器</h3>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/78149193ade29ce59e77e3b1ecec9cc759c92424815b2f04d66abfee78750d89/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373430312d50697850696e5f323032342d31302d31355f32332d31362d32382d323639783330302e706e67"><img src="https://camo.githubusercontent.com/78149193ade29ce59e77e3b1ecec9cc759c92424815b2f04d66abfee78750d89/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373430312d50697850696e5f323032342d31302d31355f32332d31362d32382d323639783330302e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337401-PixPin_2024-10-15_23-16-28-269x300.png" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/aad6eacc1688aee262437edd5b570457c9c0c39758757039cb1f44e358785092/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373432322d50697850696e5f323032342d31302d31355f32332d31372d31352d333030783137322e706e67"><img src="https://camo.githubusercontent.com/aad6eacc1688aee262437edd5b570457c9c0c39758757039cb1f44e358785092/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373432322d50697850696e5f323032342d31302d31355f32332d31372d31352d333030783137322e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337422-PixPin_2024-10-15_23-17-15-300x172.png" style="max-width: 100%;"></a></p>
+<p>选择==Ubantu 22.04==(好像CentOS的版本有点老)，勾选==预装宝塔面板==</p>
+<blockquote>[!CAUTION]
+<p><strong>不要选Windows！！！</strong></p></blockquote><br>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/8198cda4ffa034f31623f3170cd94bce90c2283534770fca4daee853b70a84b5/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373338312d50697850696e5f323032342d31302d31355f32332d31342d34352d333030783131342e706e67"><img src="https://camo.githubusercontent.com/8198cda4ffa034f31623f3170cd94bce90c2283534770fca4daee853b70a84b5/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373338312d50697850696e5f323032342d31302d31355f32332d31342d34352d333030783131342e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337381-PixPin_2024-10-15_23-14-45-300x114.png" style="max-width: 100%;"></a></p><p></p>
+<p>立即试用，会自动帮你创建一个实例，next</p>
+<h3>3.1.4 进入实例，开始配置</h3>
+<blockquote>在实例中可以看到自己的<strong>公网IP</strong>，请牢记存放位置，鼠标贴近可以复制(没有人记得住IP吧:frowning:)
+<p>[!CAUTION]</p>
+<p><strong>在配置前我们还需进入安全组来添加端口</strong>，(因为安装宝塔面板的话默认是8888端口，而阿里云为了安全会关闭该端口，所以我们要打开)</p></blockquote><br>
+打开左侧栏安全组，点开==管理规则==<p></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/803504dd8265815dcc9c21d4b6f945a28a7f16b7d99dbea9a75800e3f84f9281/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373735352d50697850696e5f323032342d31302d31355f32332d35342d34372d333030783134332e706e67"><img src="https://camo.githubusercontent.com/803504dd8265815dcc9c21d4b6f945a28a7f16b7d99dbea9a75800e3f84f9281/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373735352d50697850696e5f323032342d31302d31355f32332d35342d34372d333030783134332e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337755-PixPin_2024-10-15_23-54-47-300x143.png" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/9f0daeb6f45972000757b62c524fb9f6e69fabf3ff59522e3010f815007e9c73/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373737392d50697850696e5f323032342d31302d31355f32332d33372d30312d333030783134372e706e67"><img src="https://camo.githubusercontent.com/9f0daeb6f45972000757b62c524fb9f6e69fabf3ff59522e3010f815007e9c73/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373737392d50697850696e5f323032342d31302d31355f32332d33372d30312d333030783134372e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337779-PixPin_2024-10-15_23-37-01-300x147.png" style="max-width: 100%;"></a></p>
+<p>点击==快速添加==，这里我已经添加过了</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/e67f1fafa03b3d1a6780676243d3132bd99ab17f807348a142bea21a60d0b4e7/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373739392d50697850696e5f323032342d31302d31355f32332d35352d35372d3330307838382e706e67"><img src="https://camo.githubusercontent.com/e67f1fafa03b3d1a6780676243d3132bd99ab17f807348a142bea21a60d0b4e7/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373739392d50697850696e5f323032342d31302d31355f32332d35352d35372d3330307838382e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337799-PixPin_2024-10-15_23-55-57-300x88.png" style="max-width: 100%;"></a></p>
+<p>这里按照我图片输入，(PS：后续为了安全我们还要修改宝塔面板的默认端口，所以我们输大一点，当然也可以小一点)</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/b1f49af0d8c4075c0a32590f95b51b97fba164aa2f25c4249cbf7222bbea084d/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373832312d50697850696e5f323032342d31302d31355f32332d35362d35382d333030783135302e706e67"><img src="https://camo.githubusercontent.com/b1f49af0d8c4075c0a32590f95b51b97fba164aa2f25c4249cbf7222bbea084d/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373832312d50697850696e5f323032342d31302d31355f32332d35362d35382d333030783135302e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337821-PixPin_2024-10-15_23-56-58-300x150.png" style="max-width: 100%;"></a></p>
+<p>添加完后，接下来再次进入左侧栏应用管理</p>
+<blockquote>找到宝塔面板，进行安装</blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/814438f4480acac4bcb7a066f986a94849361b035a35617d29a140cc1b95a37e/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373834382d50697850696e5f323032342d31302d31355f32332d34362d33342d333030783135372e706e67"><img src="https://camo.githubusercontent.com/814438f4480acac4bcb7a066f986a94849361b035a35617d29a140cc1b95a37e/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373834382d50697850696e5f323032342d31302d31355f32332d34362d33342d333030783135372e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337848-PixPin_2024-10-15_23-46-34-300x157.png" style="max-width: 100%;"></a></p>
+<blockquote>选择自己的服务器实例，实例名称填系统给的</blockquote>
+下一步，确认订单，系统就会给你安装，耐心等待一会
+<h2>3.2 宝塔面板操作</h2>
+部署完后系统会给你一个宝塔面板的URL，以及密码。
+<blockquote>首次进入宝塔面板，会要求绑定，先注册一个宝塔账号绑定即可</blockquote>
+然后宝塔面板会弹出以下安装界面：
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/1ba5001cba2e5dfd7c4805eb50b46caa851b9433425006446bf97ae1becc6b3f/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373837312d50697850696e5f323032342d31302d31365f30372d35392d33312d333030783233372e706e67"><img src="https://camo.githubusercontent.com/1ba5001cba2e5dfd7c4805eb50b46caa851b9433425006446bf97ae1becc6b3f/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373837312d50697850696e5f323032342d31302d31365f30372d35392d33312d333030783233372e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337871-PixPin_2024-10-16_07-59-31-300x237.png" style="max-width: 100%;"></a></p>
+<blockquote>[!NOTE]
+<p>]安装过程中我们可以修改一下宝塔面板的登录账号密码，等安装完后我们可以修改端口号</p>
+<p>[!WARNING]</p>
+<p>端口号一定要选在8888~35535我们之前的区间里</p></blockquote><br>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/96688d0fe2a283609aa8c483db00c86157936e5af25e025e10b8fbe38967a5af/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373838362d50697850696e5f323032342d31302d31365f30382d30372d30362d3330307834352e706e67"><img src="https://camo.githubusercontent.com/96688d0fe2a283609aa8c483db00c86157936e5af25e025e10b8fbe38967a5af/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373838362d50697850696e5f323032342d31302d31365f30382d30372d30362d3330307834352e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337886-PixPin_2024-10-16_08-07-06-300x45.png" style="max-width: 100%;"></a></p><p></p>
+<h2>3.3 网站的搭建</h2>
+<blockquote>[!NOTE]
+<p><strong>有两种选择</strong></p>
+<p>1.使用软件<strong>一键部署</strong>(着重介绍)</p>
+<p>2.<strong>自行搭建</strong>，进入网站栏，点击添加站点，没有域名的话，使用自己的公网IP就行(当然我建议后期尝试自己学一下写网站代码)</p>
+<p>[!CAUTION]</p>
+<p>购买了域名的话需要备案(后面会有操作教程)而且最好买的哪个云服务器厂商的就买那个厂商的域名！！！</p></blockquote><p></p>
+<h3>3.3.1 一键部署</h3>
+<blockquote>进入左侧栏软件商店，进入一键部署，选择WordPress，点击一键部署，没有域名的输入自己的公网IP就行(后面会讲到如果有域名的过程)</blockquote>
+部署完之后系统会弹出一个界面，里面有你的数据库名和用户密码(后面可以修改)
+<p>类似这个</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/e36cc66b2aac08d9cc0f03f18455387491de66e94cac42783cc25fcafae8a7f6/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373839392d50697850696e5f323032342d31302d31365f30382d32362d33302d333030783132332e706e67"><img src="https://camo.githubusercontent.com/e36cc66b2aac08d9cc0f03f18455387491de66e94cac42783cc25fcafae8a7f6/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373839392d50697850696e5f323032342d31302d31365f30382d32362d33302d333030783132332e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337899-PixPin_2024-10-16_08-26-30-300x123.png" style="max-width: 100%;"></a></p>
+<p>进入站点，按照操作流程</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/37375f6146f02a0a0eea56bf7f02f4673cdec7ac4007859952b9d619b57875eb/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373930382d50697850696e5f323032342d31302d31365f30382d32372d35362d333030783231382e706e67"><img src="https://camo.githubusercontent.com/37375f6146f02a0a0eea56bf7f02f4673cdec7ac4007859952b9d619b57875eb/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373930382d50697850696e5f323032342d31302d31365f30382d32372d35362d333030783231382e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337908-PixPin_2024-10-16_08-27-56-300x218.png" style="max-width: 100%;"></a></p>
+<blockquote>[!CAUTION]
+<p>这里的数据库名用户密码填宝塔给的</p></blockquote><br>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/3c6f884dc0c417dda02c60a9375b40def7246da57f9b4f86698ba57d0bcf2fc3/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373931392d50697850696e5f323032342d31302d31365f30382d33302d31392d333030783138382e706e67"><img src="https://camo.githubusercontent.com/3c6f884dc0c417dda02c60a9375b40def7246da57f9b4f86698ba57d0bcf2fc3/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373931392d50697850696e5f323032342d31302d31365f30382d33302d31392d333030783138382e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337919-PixPin_2024-10-16_08-30-19-300x188.png" style="max-width: 100%;"></a></p><p></p>
+<p>后面就可以自定义自己的网站了(我就不演示了，按照自己的兴趣眼光来)</p>
+<blockquote>至此，我们一键部署，网站就成功搭建完成了，所有人可以输入你的公网IP来访问你到网站，但是我们的网站还需要SSL证书来是我们的网站安全(大白话就是使得http--&gt;https:stuck_out_tongue_winking_eye:)</blockquote>
+<h3>3.3.1 自行搭建(非必要)</h3>
+如果想用自己写的网站代码，那么就之间进入网站栏，点击快速添加，建立网站
+<blockquote>进入网站根目录，首先把默认的文件删除(会有一个user文件剩下哈)</blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/3fbef23c8df99bf104fb3d3bffed9267ed71e47ed8d585e548d5fe2b8e2f56f9/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373933352d50697850696e5f323032342d31302d31365f30382d33392d31372d333030783131342e706e67"><img src="https://camo.githubusercontent.com/3fbef23c8df99bf104fb3d3bffed9267ed71e47ed8d585e548d5fe2b8e2f56f9/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373933352d50697850696e5f323032342d31302d31365f30382d33392d31372d333030783131342e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337935-PixPin_2024-10-16_08-39-17-300x114.png" style="max-width: 100%;"></a></p>
+<p>然后我们在导入自己写的网页代码就行</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/b09765b6d6f4fd66de22dc3ac622d2978b0b4f15bd646a812b8514c0161b1655/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373934362d50697850696e5f323032342d31302d31365f30382d34302d35342d333030783139322e706e67"><img src="https://camo.githubusercontent.com/b09765b6d6f4fd66de22dc3ac622d2978b0b4f15bd646a812b8514c0161b1655/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373934362d50697850696e5f323032342d31302d31365f30382d34302d35342d333030783139322e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337946-PixPin_2024-10-16_08-40-54-300x192.png" style="max-width: 100%;"></a></p>
+<blockquote>访问网站，大功告成！！！:kissing_heart:</blockquote>
+<h2>网站的SSL证书配置(重要)</h2>
+我用的是这个，很快就能申请好
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/61e0f40238894c502f95dca4ddbb959d1e0786a6bb1a675d40a20bff28c738b0/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373936362d50697850696e5f323032342d31302d31365f30382d34382d33362d333030783134362e706e67"><img src="https://camo.githubusercontent.com/61e0f40238894c502f95dca4ddbb959d1e0786a6bb1a675d40a20bff28c738b0/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373936362d50697850696e5f323032342d31302d31365f30382d34382d33362d333030783134362e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337966-PixPin_2024-10-16_08-48-36-300x146.png" style="max-width: 100%;"></a></p>
+<p>大家参考一下这个视频</p>
+&lt;iframe src="//player.bilibili.com/player.html?isOutside=true&amp;aid=113216378114228&amp;bvid=BV1LhxieUEJ2&amp;cid=26051545985&amp;p=1&amp;autoplay=0" frameborder="no" scrolling="no" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;
+<p>得到了证书我们复制宝塔证书进入宝塔面板的SSL![]<a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/07cbd94eab2dc3dad03c8a3b13cbb607741ffd9b4099b6b3b6711e7baa6057af/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373938302d50697850696e5f323032342d31302d31365f30382d35372d35352d333030783233382e706e67"><img src="https://camo.githubusercontent.com/07cbd94eab2dc3dad03c8a3b13cbb607741ffd9b4099b6b3b6711e7baa6057af/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373938302d50697850696e5f323032342d31302d31365f30382d35372d35352d333030783233382e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337980-PixPin_2024-10-16_08-57-55-300x238.png" style="max-width: 100%;"></a></p>
+<p>复制提交即可</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5b16fb161c3c9a396d93c6ba73cc92594e9d5a2c692f031a2519e8e715bb2b2b/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373938362d50697850696e5f323032342d31302d31365f30382d35392d30372d333030783234332e706e67"><img src="https://camo.githubusercontent.com/5b16fb161c3c9a396d93c6ba73cc92594e9d5a2c692f031a2519e8e715bb2b2b/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333373938362d50697850696e5f323032342d31302d31365f30382d35392d30372d333030783234332e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729337986-PixPin_2024-10-16_08-59-07-300x243.png" style="max-width: 100%;"></a></p>
+<blockquote>配置好后别忘了进入宝塔面板打开强制https</blockquote>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/d0dfbfda9245385fba9cb5dfb8a53ecf05be7c15caacc0417b7b16f3e170301e/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333383030372d50697850696e5f323032342d31302d31365f30382d35352d32382d3330307837352e706e67"><img src="https://camo.githubusercontent.com/d0dfbfda9245385fba9cb5dfb8a53ecf05be7c15caacc0417b7b16f3e170301e/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333383030372d50697850696e5f323032342d31302d31365f30382d35352d32382d3330307837352e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729338007-PixPin_2024-10-16_08-55-28-300x75.png" style="max-width: 100%;"></a></p>
+<p>GOOD!<strong>😆</strong>😆😆现在算是完成了</p>
+<h1>附件1 域名的备案</h1>
+<blockquote>[!WARNING]
+<p>一定要先备案，然后备案好后再进行DNS解析，备案周期大约20多天</p></blockquote><br>
+贴个链接大家仔细阅读<p></p>
+<p><a href="https://developer.aliyun.com/article/767024" rel="nofollow">阿里云网站域名备案流程全过程讲解(图文)-阿里云开发者社区 (aliyun.com)</a></p>
+<h1>附件2 域名的DNS解析</h1>
+<blockquote>如果我们购买了一个域名，以阿里云域名为例，进入阿里云域名控制台，我们可以配置DNS解析，使自己的域名能被解析到我们的公网IP上</blockquote>
+<h2>进入并配置云解析-DNS</h2>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/77fd5b60cbe8451e4d6b37e881b4666cfb12ff5a41fcced2c7dadd62e321ea76/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333383033362d50697850696e5f323032342d31302d31365f30392d30372d30332d3330307836382e706e67"><img src="https://camo.githubusercontent.com/77fd5b60cbe8451e4d6b37e881b4666cfb12ff5a41fcced2c7dadd62e321ea76/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333383033362d50697850696e5f323032342d31302d31365f30392d30372d30332d3330307836382e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729338036-PixPin_2024-10-16_09-07-03-300x68.png" style="max-width: 100%;"></a></p>
+<p>进入新手引导</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/eac0cb4adc7e4376e3751b4855255749a9167808b33c222e4d02db9ce0628379/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333383034382d50697850696e5f323032342d31302d31365f30392d30392d32372d333030783239342e706e67"><img src="https://camo.githubusercontent.com/eac0cb4adc7e4376e3751b4855255749a9167808b33c222e4d02db9ce0628379/68747470733a2f2f6e73682e617369612f77702d636f6e74656e742f75706c6f6164732f323032342f31302f313732393333383034382d50697850696e5f323032342d31302d31365f30392d30392d32372d333030783239342e706e67" alt="" data-canonical-src="https://nsh.asia/wp-content/uploads/2024/10/1729338048-PixPin_2024-10-16_09-09-27-300x294.png" style="max-width: 100%;"></a></p>
+<p>勾选后输入自己的公网IP，然后就能配置成功了</p>
+<p>之后我们就可以访问自己的域名了，是不是很棒？！:smile:<br>
+贴一个PDF文件<a title="1729093217-教程 搭建一个个人网站" href="https://nsh.asia/wp-content/uploads/2024/10/1729093217-%E6%95%99%E7%A8%8B-%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99.pdf" rel="nofollow">1729093217-教程 搭建一个个人网站</a><br>
+贴一个md文件<a title="1729077374-教程 搭建一个个人网站" href="https://nsh.asia/wp-content/uploads/2024/10/1729077374-%E6%95%99%E7%A8%8B-%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99.md" rel="nofollow">1729077374-教程 搭建一个个人网站</a></p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://Nshpiter.github.io">piter的github博客</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if(""!=""){
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","Nshpiter/Nshpiter.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+
+
+</script>
+
+
+</html>
