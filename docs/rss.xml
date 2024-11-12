@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>piter的github博客</title><link>https://Nshpiter.github.io</link><description>分享些经验和技巧</description><copyright>piter的github博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://Nshpiter.github.io</link></image><lastBuildDate>Tue, 12 Nov 2024 03:59:52 +0000</lastBuildDate><managingEditor>piter的github博客</managingEditor><ttl>60</ttl><webMaster>piter的github博客</webMaster><item><title>手把手教你搭建网站</title><link>https://Nshpiter.github.io/post/shou-ba-shou-jiao-ni-da-jian-wang-zhan.html</link><description>&lt;h1&gt;教程 搭建一个个人网站&lt;/h1&gt;&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>piter的github博客</title><link>https://Nshpiter.github.io</link><description>分享些经验和技巧</description><copyright>piter的github博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://github.githubassets.com/favicons/favicon.svg</url><title>avatar</title><link>https://Nshpiter.github.io</link></image><lastBuildDate>Tue, 12 Nov 2024 04:01:44 +0000</lastBuildDate><managingEditor>piter的github博客</managingEditor><ttl>60</ttl><webMaster>piter的github博客</webMaster><item><title>手把手教你搭建网站</title><link>https://Nshpiter.github.io/post/shou-ba-shou-jiao-ni-da-jian-wang-zhan.html</link><description>&lt;h1&gt;教程 搭建一个个人网站&lt;/h1&gt;&#13;
 &lt;h2&gt;1 教程目的&lt;/h2&gt;&#13;
 学习建立一个自己个人网站来记录自己的生活&#13;
 &lt;h2&gt;2 教程内容&lt;/h2&gt;&#13;
@@ -60,7 +60,7 @@
 &lt;blockquote&gt;选择自己的服务器实例，实例名称填系统给的&lt;/blockquote&gt;&#13;
 下一步，确认订单，系统就会给你安装，耐心等待一会&#13;
 &lt;h2&gt;3.2 宝塔面板操作&lt;/h2&gt;&#13;
-部署完后系统会给你一个宝塔面板的URL，以及密码。</description><guid isPermaLink="true">https://Nshpiter.github.io/post/shou-ba-shou-jiao-ni-da-jian-wang-zhan.html</guid><pubDate>Tue, 12 Nov 2024 03:49:22 +0000</pubDate></item><item><title>piter的github博客</title><link>https://Nshpiter.github.io/post/piter-de-github-bo-ke.html</link><description>&lt;!-- wp:heading --&gt;&#13;
+部署完后系统会给你一个宝塔面板的URL，以及密码。</description><guid isPermaLink="true">https://Nshpiter.github.io/post/shou-ba-shou-jiao-ni-da-jian-wang-zhan.html</guid><pubDate>Tue, 12 Nov 2024 03:49:22 +0000</pubDate></item><item><title>用docker部署memos</title><link>https://Nshpiter.github.io/post/yong-docker-bu-shu-memos.html</link><description>&lt;!-- wp:heading --&gt;&#13;
 &lt;h2 class='wp-block-heading'&gt;在开始之前&lt;/h2&gt;&#13;
 &lt;!-- /wp:heading --&gt;&#13;
 &#13;
@@ -73,4 +73,4 @@
 &lt;!-- /wp:paragraph --&gt;&#13;
 &#13;
 &lt;!-- wp:paragraph --&gt;&#13;
-&lt;p style='padding-left: 40px;'&gt;这是一个采用 React+Tailwind+TypeScript+Go 开发的备忘录中心，相当于极简的微博。</description><guid isPermaLink="true">https://Nshpiter.github.io/post/piter-de-github-bo-ke.html</guid><pubDate>Tue, 12 Nov 2024 02:35:49 +0000</pubDate></item></channel></rss>
+&lt;p style='padding-left: 40px;'&gt;这是一个采用 React+Tailwind+TypeScript+Go 开发的备忘录中心，相当于极简的微博。</description><guid isPermaLink="true">https://Nshpiter.github.io/post/yong-docker-bu-shu-memos.html</guid><pubDate>Tue, 12 Nov 2024 02:35:49 +0000</pubDate></item></channel></rss>
