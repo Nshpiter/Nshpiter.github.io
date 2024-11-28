@@ -2,12 +2,14 @@
 ![image](https://github.com/user-attachments/assets/61ee36d4-f5fd-4539-8b87-5a47f43243d6)
 > [!TIP]
 题目一开始提示管理员才能拿到flag
+
 ![image](https://github.com/user-attachments/assets/c52243ba-d9d5-49ed-af69-999bc87e8aaa)
 有输入框，想都没想直接填写**admin**
 ![image](https://github.com/user-attachments/assets/0bbfc740-074a-4d0d-b31e-b5f86edf6c8d)
 不出所料诶~~~
 > [!NOTE]
 那就尝试一下别的随便用户名，诶有个拿flag的按钮，好吧，要**管理员**才可以
+
 ![image](https://github.com/user-attachments/assets/561e2fd8-2f9b-4f50-8648-9bc4cec85eb5)
 > [TIP]
 那就只能伪造了
@@ -20,6 +22,7 @@
 ### 仔细查看网页框架
 > [!NOTE]
 是flask框架，这次是session伪造了
+
 查看flask资料和各位师傅的wp
 > [!TIP]
 **flask框架的session是存储在客户端的，那么就需要解决session是否会被恶意纂改的问题，而flask通过一个secret_key，也就是密钥对数据进行签名来防止session被纂改。**
@@ -58,7 +61,7 @@ if __name__ == '__main__':
 ### 猜测key
 > 由于题目没有给，我们只好猜测key为LitCTF
 ```
-xxxxxxxxxx python flask_session_cookie_manager3.py encode -s 'LitCTF' -t '{"name":"admin"}'eyJuYW1lIjoiYWRtaW4ifQ.ZUoYpw.-wWfai1NY-VXpGGXHqnCG5H9-Ug
+python flask_session_cookie_manager3.py encode -s 'LitCTF' -t '{"name":"admin"}'eyJuYW1lIjoiYWRtaW4ifQ.ZUoYpw.-wWfai1NY-VXpGGXHqnCG5H9-Ug
 ```
 使用kali虚拟机运行一下，将得到的session填入cookie-editor保存，刷新后即可拿到flag
-> ==NSSCTF{47877fbb-32b0-46ec-bdd6-a926b910870e}==
+> **NSSCTF{47877fbb-32b0-46ec-bdd6-a926b910870e}**
