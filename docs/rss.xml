@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>piter的github</title><link>https://Nshpiter.github.io</link><description>分享些经验和技巧</description><copyright>piter的github</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/176191868?s=96&amp;v=4</url><title>avatar</title><link>https://Nshpiter.github.io</link></image><lastBuildDate>Thu, 28 Nov 2024 23:37:16 +0000</lastBuildDate><managingEditor>piter的github</managingEditor><ttl>60</ttl><webMaster>piter的github</webMaster><item><title>Web 4 [LitCTF 2023]Flag点击就送！</title><link>https://Nshpiter.github.io/post/Web%204%20%5BLitCTF%202023%5DFlag-dian-ji-jiu-song-%EF%BC%81.html</link><description>## [LitCTF 2023\]Flag点击就送！ | NSSCTF](https://www.nssctf.cn/problem/3872)&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>piter的github</title><link>https://Nshpiter.github.io</link><description>分享些经验和技巧</description><copyright>piter的github</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/176191868?s=96&amp;v=4</url><title>avatar</title><link>https://Nshpiter.github.io</link></image><lastBuildDate>Thu, 28 Nov 2024 23:39:38 +0000</lastBuildDate><managingEditor>piter的github</managingEditor><ttl>60</ttl><webMaster>piter的github</webMaster><item><title>Web 4 [LitCTF 2023]Flag点击就送！</title><link>https://Nshpiter.github.io/post/Web%204%20%5BLitCTF%202023%5DFlag-dian-ji-jiu-song-%EF%BC%81.html</link><description>## [LitCTF 2023\]Flag点击就送！ | NSSCTF](https://www.nssctf.cn/problem/3872)&#13;
 ![image](https://github.com/user-attachments/assets/61ee36d4-f5fd-4539-8b87-5a47f43243d6)&#13;
 &gt; [!TIP]&#13;
 题目一开始提示管理员才能拿到flag&#13;
@@ -12,7 +12,7 @@
 那就尝试一下别的随便用户名，诶有个拿flag的按钮，好吧，要**管理员**才可以&#13;
 &#13;
 ![image](https://github.com/user-attachments/assets/561e2fd8-2f9b-4f50-8648-9bc4cec85eb5)&#13;
-&gt; [TIP]&#13;
+&gt; [!TIP]&#13;
 那就只能伪造了&#13;
 ### 和之前做过的邮箱重置链接的JWT不同，这里找到session&#13;
 ![image](https://github.com/user-attachments/assets/7a6b10d0-bcfd-44d3-a286-ec310f92ecab)&#13;

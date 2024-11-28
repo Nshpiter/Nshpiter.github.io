@@ -11,7 +11,7 @@
 那就尝试一下别的随便用户名，诶有个拿flag的按钮，好吧，要**管理员**才可以
 
 ![image](https://github.com/user-attachments/assets/561e2fd8-2f9b-4f50-8648-9bc4cec85eb5)
-> [TIP]
+> [!TIP]
 那就只能伪造了
 ### 和之前做过的邮箱重置链接的JWT不同，这里找到session
 ![image](https://github.com/user-attachments/assets/7a6b10d0-bcfd-44d3-a286-ec310f92ecab)
