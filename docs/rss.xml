@@ -1,5 +1,22 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>piter的github</title><link>https://Nshpiter.github.io</link><description>分享些经验和技巧</description><copyright>piter的github</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/176191868?s=96&amp;v=4</url><title>avatar</title><link>https://Nshpiter.github.io</link></image><lastBuildDate>Thu, 28 Nov 2024 23:39:38 +0000</lastBuildDate><managingEditor>piter的github</managingEditor><ttl>60</ttl><webMaster>piter的github</webMaster><item><title>Web 4 [LitCTF 2023]Flag点击就送！</title><link>https://Nshpiter.github.io/post/Web%204%20%5BLitCTF%202023%5DFlag-dian-ji-jiu-song-%EF%BC%81.html</link><description>## [LitCTF 2023\]Flag点击就送！ | NSSCTF](https://www.nssctf.cn/problem/3872)&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>piter的github</title><link>https://Nshpiter.github.io</link><description>分享些经验和技巧</description><copyright>piter的github</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/176191868?s=96&amp;v=4</url><title>avatar</title><link>https://Nshpiter.github.io</link></image><lastBuildDate>Sat, 30 Nov 2024 08:07:17 +0000</lastBuildDate><managingEditor>piter的github</managingEditor><ttl>60</ttl><webMaster>piter的github</webMaster><item><title>[LitCTF 2023]Ping</title><link>https://Nshpiter.github.io/post/%5BLitCTF%202023%5DPing.html</link><description>- **一题多解思考**&#13;
+![image](https://github.com/user-attachments/assets/03797ba0-f8fa-42f6-8182-ea9f499873e0)&#13;
+&gt; 看题目&#13;
+&#13;
+![image](https://github.com/user-attachments/assets/6b58c0e7-1480-43c2-b377-783947e75e52)&#13;
+### 尝试随便ping一个值&#13;
+&gt; [!TIP]&#13;
+比如本地回环地址127.0.01&#13;
+&#13;
+![image](https://github.com/user-attachments/assets/99d51359-2c5f-4baa-a7ea-8c8bd542d6a1)&#13;
+&gt; 果然不行呢，有验证，查了一下资料叫做前端验证&#13;
+&#13;
+![image](https://github.com/user-attachments/assets/64529f4f-94f7-470b-a2b3-27d6ccb49983)&#13;
+&gt; [!TIP]&#13;
+采用的是JavaScript的方式：&#13;
+&#13;
+### **JavaScript功能**&#13;
+**IP地址验证**：`check_ip()` 函数用于验证用户输入的IP地址是否符合IPv4格式。</description><guid isPermaLink="true">https://Nshpiter.github.io/post/%5BLitCTF%202023%5DPing.html</guid><pubDate>Sat, 30 Nov 2024 08:06:55 +0000</pubDate></item><item><title>Web 4 [LitCTF 2023]Flag点击就送！</title><link>https://Nshpiter.github.io/post/Web%204%20%5BLitCTF%202023%5DFlag-dian-ji-jiu-song-%EF%BC%81.html</link><description>## [LitCTF 2023\]Flag点击就送！ | NSSCTF](https://www.nssctf.cn/problem/3872)&#13;
 ![image](https://github.com/user-attachments/assets/61ee36d4-f5fd-4539-8b87-5a47f43243d6)&#13;
 &gt; [!TIP]&#13;
 题目一开始提示管理员才能拿到flag&#13;
