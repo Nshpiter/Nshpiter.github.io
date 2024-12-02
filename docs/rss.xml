@@ -1,5 +1,25 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>piter的github</title><link>https://Nshpiter.github.io</link><description>分享些经验和技巧</description><copyright>piter的github</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/176191868?s=96&amp;v=4</url><title>avatar</title><link>https://Nshpiter.github.io</link></image><lastBuildDate>Sun, 01 Dec 2024 09:37:41 +0000</lastBuildDate><managingEditor>piter的github</managingEditor><ttl>60</ttl><webMaster>piter的github</webMaster><item><title>Web 7 [LitCTF 2023]作业管理系统</title><link>https://Nshpiter.github.io/post/Web%207%20%5BLitCTF%202023%5D-zuo-ye-guan-li-xi-tong.html</link><description>[LitCTF 2023\]作业管理系统 | NSSCTF](https://www.nssctf.cn/problem/3867)&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>piter的github</title><link>https://Nshpiter.github.io</link><description>分享些经验和技巧</description><copyright>piter的github</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/176191868?s=96&amp;v=4</url><title>avatar</title><link>https://Nshpiter.github.io</link></image><lastBuildDate>Mon, 02 Dec 2024 12:48:20 +0000</lastBuildDate><managingEditor>piter的github</managingEditor><ttl>60</ttl><webMaster>piter的github</webMaster><item><title>Web 8 [suctf 2019]EasySQL</title><link>https://Nshpiter.github.io/post/Web%208%20%5Bsuctf%202019%5DEasySQL.html</link><description>[suctf 2019\]EasySQL | NSSCTF](https://www.nssctf.cn/problem/19)&#13;
+![image](https://github.com/user-attachments/assets/fd4a60a8-81cb-4471-8dc0-618692d2cb96)&#13;
+&gt; 前面使用了SQLMap来自动化注入，现在先来尝试手注&#13;
+&#13;
+![image](https://github.com/user-attachments/assets/42b5cd88-216d-4e6c-8b98-9880fb253d32)&#13;
+&gt; 1.常规的单、双、括号、数字组合fuzzing一遍 PS:(fuzzing查资料)&#13;
+&#13;
+![image](https://github.com/user-attachments/assets/ab1502d7-0f31-4a84-8117-1ba3e6e23d02)&#13;
+返回这个值&#13;
+&gt; 2.再尝试直接输flag或者（order by、 union select 、information_schema）&#13;
+&#13;
+![image](https://github.com/user-attachments/assets/47811f60-5185-474b-863d-308c77d71765)&#13;
+看来是限制了flag等敏感词的输入&#13;
+&gt; 尝试其他可能的输出&#13;
+&#13;
+可能有无输出的，页面不返回任何数据&#13;
+&gt; 回过头来看第一种情况，发现可以堆叠注入&#13;
+&#13;
+&gt; ### 1. **什么是堆叠注入？**&#13;
+&#13;
+- **堆叠注入**是指在同一SQL查询中执行多个SQL语句的能力。</description><guid isPermaLink="true">https://Nshpiter.github.io/post/Web%208%20%5Bsuctf%202019%5DEasySQL.html</guid><pubDate>Mon, 02 Dec 2024 12:47:53 +0000</pubDate></item><item><title>Web 7 [LitCTF 2023]作业管理系统</title><link>https://Nshpiter.github.io/post/Web%207%20%5BLitCTF%202023%5D-zuo-ye-guan-li-xi-tong.html</link><description>[LitCTF 2023\]作业管理系统 | NSSCTF](https://www.nssctf.cn/problem/3867)&#13;
 ![image](https://github.com/user-attachments/assets/34131100-d9f3-4f1b-9873-730a9663da4f)&#13;
 &gt; [!TIP]&#13;
 看到作业管理系统就想到了可能要登录&#13;
