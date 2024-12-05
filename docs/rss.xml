@@ -1,5 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>piter的github</title><link>https://Nshpiter.github.io</link><description>分享些经验和技巧</description><copyright>piter的github</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/176191868?s=96&amp;v=4</url><title>avatar</title><link>https://Nshpiter.github.io</link></image><lastBuildDate>Mon, 02 Dec 2024 12:48:20 +0000</lastBuildDate><managingEditor>piter的github</managingEditor><ttl>60</ttl><webMaster>piter的github</webMaster><item><title>Web 8 [suctf 2019]EasySQL</title><link>https://Nshpiter.github.io/post/Web%208%20%5Bsuctf%202019%5DEasySQL.html</link><description>[suctf 2019\]EasySQL | NSSCTF](https://www.nssctf.cn/problem/19)&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>piter的github</title><link>https://Nshpiter.github.io</link><description>分享些经验和技巧</description><copyright>piter的github</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/176191868?s=96&amp;v=4</url><title>avatar</title><link>https://Nshpiter.github.io</link></image><lastBuildDate>Thu, 05 Dec 2024 16:03:02 +0000</lastBuildDate><managingEditor>piter的github</managingEditor><ttl>60</ttl><webMaster>piter的github</webMaster><item><title>Web 9 [SWPUCTF 2021 新生赛]Do_you_know_http</title><link>https://Nshpiter.github.io/post/Web%209%20%5BSWPUCTF%202021%20-xin-sheng-sai-%5DDo_you_know_http.html</link><description>[SWPUCTF 2021 新生赛\]Do_you_know_http | NSSCTF](https://www.nssctf.cn/problem/385)&#13;
+![image](https://github.com/user-attachments/assets/d080fec3-3b71-4d01-83e9-25aca998f4fe)&#13;
+&gt; 本题考查burpsuite以及http的相关知识&#13;
+&#13;
+![image](https://github.com/user-attachments/assets/369a7441-f579-485a-bb0e-fa5efc7e2b26)&#13;
+题目要求我们使用WLLM浏览器打开，我们使用burpsuite抓包更改&#13;
+![image](https://github.com/user-attachments/assets/5c45488e-e377-4ac2-adc6-c86f6a180e9c)&#13;
+发现location处有新的地址,跟随重定向进到下一个文件&#13;
+&gt; **重定向**就是当用户访问一个网址时，服务器告诉浏览器去访问另一个网址。</description><guid isPermaLink="true">https://Nshpiter.github.io/post/Web%209%20%5BSWPUCTF%202021%20-xin-sheng-sai-%5DDo_you_know_http.html</guid><pubDate>Thu, 05 Dec 2024 16:02:39 +0000</pubDate></item><item><title>Web 8 [suctf 2019]EasySQL</title><link>https://Nshpiter.github.io/post/Web%208%20%5Bsuctf%202019%5DEasySQL.html</link><description>[suctf 2019\]EasySQL | NSSCTF](https://www.nssctf.cn/problem/19)&#13;
 ![image](https://github.com/user-attachments/assets/fd4a60a8-81cb-4471-8dc0-618692d2cb96)&#13;
 &gt; 前面使用了SQLMap来自动化注入，现在先来尝试手注&#13;
 &#13;
