@@ -1,5 +1,31 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>piter的github</title><link>https://Nshpiter.github.io</link><description>分享些经验和技巧</description><copyright>piter的github</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/176191868?s=96&amp;v=4</url><title>avatar</title><link>https://Nshpiter.github.io</link></image><lastBuildDate>Sun, 12 Jan 2025 15:20:06 +0000</lastBuildDate><managingEditor>piter的github</managingEditor><ttl>60</ttl><webMaster>piter的github</webMaster><item><title>Web 14 [FSCTF 2023]巴巴托斯！</title><link>https://Nshpiter.github.io/post/Web%2014%20%5BFSCTF%202023%5D-ba-ba-tuo-si-%EF%BC%81.html</link><description>[FSCTF 2023\]巴巴托斯！ | NSSCTF](https://www.nssctf.cn/problem/4560)&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>piter的github</title><link>https://Nshpiter.github.io</link><description>分享些经验和技巧</description><copyright>piter的github</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/176191868?s=96&amp;v=4</url><title>avatar</title><link>https://Nshpiter.github.io</link></image><lastBuildDate>Fri, 14 Mar 2025 06:43:21 +0000</lastBuildDate><managingEditor>piter的github</managingEditor><ttl>60</ttl><webMaster>piter的github</webMaster><item><title>Gemini多模态尝试</title><link>https://Nshpiter.github.io/post/Gemini-duo-mo-tai-chang-shi.html</link><description>![Image](https://github.com/user-attachments/assets/d02a9ed9-71a7-4a66-a0b4-0b0a620a4317)
+
+不行，这张图太好看了，必须放在这！！！
+
+今天的体验来自一个github上面的项目，喜欢的帮作者点点star吧！
+
+[Gemini-next-chat](https://github.com/u14app/gemini-next-chat)
+
+就这个项目部署，具体就去看项目里面的介绍有vercel部署和cloudfare worker部署,在此我不再赘述
+
+使用vercel部署后，绑定好域名，进入站点 [Deno](https://chat.npiter.tech/)
+
+![Image](https://github.com/user-attachments/assets/50620666-dfe8-4156-8057-74ebf542988f)
+
+其实看名字也能看出大概，该站取名字chat next web，当然目的只是gemini
+
+- 特色：语音对话，本来gemini就支持，只是大部分人习惯文本对话
+- 重点：实时多模态对话，语音对话，模型目前只支持gemini-2.0-flash-exp
+
+废话不多说，来看看效果！
+
+https://npiter.tech/2025/02/22/gemini%e5%a4%9a%e6%a8%a1%e6%80%81%e5%b0%9d%e8%af%95/
+视频原文地址
+
+### AI摘要
+
+该文本内容展示了一段人与大型语言模型之间的对话，主要围绕着用户的桌面背景进行互动。</description><guid isPermaLink="true">https://Nshpiter.github.io/post/Gemini-duo-mo-tai-chang-shi.html</guid><pubDate>Fri, 14 Mar 2025 06:42:54 +0000</pubDate></item><item><title>Web 14 [FSCTF 2023]巴巴托斯！</title><link>https://Nshpiter.github.io/post/Web%2014%20%5BFSCTF%202023%5D-ba-ba-tuo-si-%EF%BC%81.html</link><description>[FSCTF 2023\]巴巴托斯！ | NSSCTF](https://www.nssctf.cn/problem/4560)&#13;
 打开题目&#13;
 ![image](https://github.com/user-attachments/assets/5a705449-5967-4c4e-a3d5-d1026348b4c8)&#13;
 发现需要FSCTF Browser&#13;
